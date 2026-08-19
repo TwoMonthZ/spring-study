@@ -1,0 +1,42 @@
+package com.rly.springaop.annoaop;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+@Service("calcutorImpl1")
+public class CalcutorImpl implements Calcutor {
+    //创建Logger对象
+    private Logger log = LoggerFactory.getLogger(CalcutorImpl.class);
+    @Override
+    public int add(int a, int b) {
+        int result = a + b;
+        log.info("add方法执行了{}和{}",a,b);
+//        int c = 1/0;
+        return result;
+    }
+
+    @Override
+    public int sub(int a, int b) {
+        int result = a - b;
+        log.info("sub方法执行了{}和{}",a,b);
+        return result;
+
+
+    }
+
+    @Override
+    public int mul(int a, int b) {
+        int result = a * b;
+        log.info("mul方法执行了{}和{}",a,b);
+        return result;
+
+    }
+
+    @Override
+    public int div(int a, int b) {
+        int result = a / b;
+        log.info("div方法执行了{}和{}",a,b);
+        return result;
+    }
+}

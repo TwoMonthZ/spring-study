@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--map注入-->
+    <bean id="student" class="com.rly.springiocxml.dimap.Student">
+        <property name="sid" value="20000"></property>
+        <property name="sname" value="zs"></property>
+        <property name="teacherMap">
+            <map>
+                <entry>
+                    <key><value>1</value></key>
+                    <ref bean="teacher"></ref>
+                </entry>
+                <entry>
+                    <key><value>2</value></key>
+                    <ref bean="teacher2"></ref>
+                </entry>
+                <entry>
+                    <key><value>3</value></key>
+                    <ref bean="teacher3"></ref>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    <bean id="teacher" class="com.rly.springiocxml.dimap.Teacher">
+        <property name="tid" value="10000"></property>
+        <property name="tname" value="coke"></property>
+    </bean>
+    <bean id="teacher2" class="com.rly.springiocxml.dimap.Teacher">
+        <property name="tid" value="10001"></property>
+        <property name="tname" value="陈泽"></property>
+    </bean>
+    <bean id="teacher3" class="com.rly.springiocxml.dimap.Teacher">
+        <property name="tid" value="10002"></property>
+        <property name="tname" value="黑白"></property>
+    </bean>
+</beans>

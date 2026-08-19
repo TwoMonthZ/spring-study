@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <!--
+    1、创建三个对象
+    2、注入普通类型属性
+    3、使用util：类型 定义
+    4、在学生bean里引入util：类型定义bean，完成list、map类型属性注入
+     -->
+    <bean id="lesson1" class="com.rly.springiocxml.dimap.Lesson">
+        <property name="lname" value="java开发"></property>
+    </bean>
+    <bean id="lesson2" class="com.rly.springiocxml.dimap.Lesson">
+        <property name="lname" value="web开发"></property>
+    </bean>
+    <bean id="lesson3" class="com.rly.springiocxml.dimap.Lesson">
+        <property name="lname" value="python开发"></property>
+    </bean>
+
+    <bean id="teacher1" class="com.rly.springiocxml.dimap.Teacher">
+        <property name="tid" value="100"></property>
+        <property name="tname" value="张三"></property>
+    </bean>
+
+    <bean id="teacher2" class="com.rly.springiocxml.dimap.Teacher">
+        <property name="tid" value="101"></property>
+        <property name="tname" value="李四"></property>
+    </bean>
+
+    <bean id="teacher3" class="com.rly.springiocxml.dimap.Teacher">
+        <property name="tid" value="102"></property>
+        <property name="tname" value="王五"></property>
+    </bean>
+
+    <util:list id="lessonList">
+        <ref bean="lesson1"/>
+        <ref bean="lesson2"/>
+        <ref bean="lesson3"/>
+    </util:list>
+    <util:map id="teacherMap">
+        <entry>
+            <key><value>10010</value></key>
+            <ref bean="teacher1"></ref>
+        </entry>
+        <entry>
+            <key><value>10086</value></key>
+            <ref bean="teacher2"></ref>
+        </entry>
+        <entry>
+            <key><value>10000</value></key>
+            <ref bean="teacher3"></ref>
+        </entry>
+    </util:map>
+
+    <bean id="student1" class="com.rly.springiocxml.dimap.Student">
+        <property name="sid" value="200"></property>
+        <property name="sname" value="赵六"></property>
+        <!--注入list、map类型属性-->
+        <property name="lessonList" ref="lessonList"></property>
+        <property name="teacherMap" ref="teacherMap"></property>
+    </bean>
+
+    <bean id="student2" class="com.rly.springiocxml.dimap.Student">
+        <property name="sid" value="201"></property>
+        <property name="sname" value="钱七"></property>
+
+    </bean>
+
+    <bean id="student3" class="com.rly.springiocxml.dimap.Student">
+        <property name="sid" value="202"></property>
+        <property name="sname" value="孙八"></property>
+
+    </bean>
+
+    <!--p空间注入-->
+    <bean id="studentp" class="com.rly.springiocxml.dimap.Student" p:sid="100" p:sname="mary" p:lessonList-ref="lessonList" p:teacherMap-ref="teacherMap"></bean>
+</beans>

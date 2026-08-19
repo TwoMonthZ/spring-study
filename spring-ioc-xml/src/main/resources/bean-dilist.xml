@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="emp1" class="com.rly.springiocxml.ditest.Emp">
+        <property name="ename" value="张三"></property>
+        <property name="age" value="1"></property>
+        <property name="loves">
+            <array>
+                <value>篮球</value>
+                <value>足球</value>
+                <value>羽毛球</value>
+            </array>
+        </property>
+    </bean>
+    <bean id="emp2" class="com.rly.springiocxml.ditest.Emp">
+        <property name="ename" value="李四"></property>
+        <property name="age" value="2"></property>
+        <property name="loves">
+            <array>
+                <value>读书</value>
+                <value>看报</value>
+                <value>上厕所</value>
+            </array>
+        </property>
+    </bean>
+    <bean id="emp3" class="com.rly.springiocxml.ditest.Emp">
+        <property name="ename" value="王五"></property>
+        <property name="age" value="3"></property>
+        <property name="loves">
+            <array>
+                <value>睡觉</value>
+                <value>吃饭</value>
+                <value>玩手机</value>
+            </array>
+        </property>
+    </bean>
+    <!--
+        注入List类型属性
+    -->
+   <bean id="dept" class="com.rly.springiocxml.ditest.Dept">
+       <property name="dname" value="测试部门"></property>
+       <property name="empList">
+           <list>
+                <ref bean="emp1"/>
+                <ref bean="emp2"/>
+                <ref bean="emp3"/>
+           </list>
+       </property>
+   </bean>
+
+</beans>
